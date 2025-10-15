@@ -1,0 +1,64 @@
+version: '3.8'
+
+services:
+  # Backend Service
+  backend:
+    build:
+      context: ../../
+      dockerfile: deployment/docker/Dockerfile
+    container_name: support-agent-backend
+    ports:
+      - "8000:8000"
+    environment:
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - LLM_MODEL=${LLM_MODEL:-gpt-4o}
+      - LLM_TEMPERATURE=${LLM_TEMPERATURE:-0.0}
+      - EMBEDDING_MODEL=${EMBEDDING_MODEL:-text-embedding-3-small}
+      - CHROMADB_PATH=/app/knowledge_base
+      - LOG_LEVEL=${LOG_LEVEL:-INFO}
+    volumes:
+      # Persist ChromaDB data
+      - chroma-data:/app/knowledge_base
+      # Mount logs directory
+      - ./logs:/app/logs
+    restart: unless-stopped
+    networks:
+      - support-agent-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  # NGINX Reverse Proxy
+  nginx:
+    image: nginx:alpine
+    container_name: support-agent-nginx
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      # NGINX configuration
+      - ../../frontend:/usr/share/nginx/html:ro
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf:ro
+      # SSL certificates (uncomment when using SSL)
+      # - ./ssl:/etc/nginx/ssl:ro
+    depends_on:
+      - backend
+    restart: unless-stopped
+    networks:
+      - support-agent-network
+    healthcheck:
+      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+volumes:
+  chroma-data:
+    driver: local
+
+networks:
+  support-agent-network:
+    driver: bridge

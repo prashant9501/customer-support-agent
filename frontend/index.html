@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="AI-powered customer support chat - Get instant help 24/7">
+    <title>Customer Support Chat | AI Assistant</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="icon" type="image/x-icon" href="/static/assets/favicon.ico">
+</head>
+<body>
+    <div class="chat-container">
+        <!-- Chat Header -->
+        <div class="chat-header">
+            <div class="header-content">
+                <div class="header-title">
+                    <svg class="header-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                    </svg>
+                    <h2>AI Customer Support</h2>
+                </div>
+                <span id="status" class="status-indicator status-online">
+                    <span class="status-dot"></span>
+                    Online
+                </span>
+            </div>
+            <p class="header-subtitle">Ask me anything about our products and services</p>
+        </div>
+        
+        <!-- Chat Messages Area -->
+        <div id="chat-messages" class="chat-messages">
+            <!-- Welcome message -->
+            <div class="message agent welcome-message">
+                <div class="message-avatar agent-avatar">AI</div>
+                <div class="message-content">
+                    <p>👋 Hello! I'm your AI support assistant. I can help you with:</p>
+                    <ul>
+                        <li><strong>Technical questions</strong> - APIs, integrations, deployment</li>
+                        <li><strong>Billing inquiries</strong> - Pricing, payments, refunds</li>
+                        <li><strong>General information</strong> - Company info, policies, support</li>
+                    </ul>
+                    <p>How can I assist you today?</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Typing Indicator -->
+        <div id="typing-indicator" class="typing-indicator" style="display: none;">
+            <div class="message-avatar agent-avatar">AI</div>
+            <div class="typing-dots">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        
+        <!-- Metadata Display -->
+        <div class="metadata" id="metadata" style="display: none;">
+            <div class="metadata-item">
+                <svg class="metadata-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M20 7h-9M14 17H5M5 7h.01M9.01 17h.01"></path>
+                </svg>
+                <span id="category-display"></span>
+            </div>
+            <div class="metadata-item">
+                <svg class="metadata-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <path d="M8 14s1.5 2 4 2 4-2 4-2M9 9h.01M15 9h.01"></path>
+                </svg>
+                <span id="sentiment-display"></span>
+            </div>
+        </div>
+        
+        <!-- Chat Input Area -->
+        <div class="chat-input-container">
+            <div class="input-wrapper">
+                <input 
+                    type="text" 
+                    id="user-input" 
+                    placeholder="Type your question here..."
+                    autocomplete="off"
+                    maxlength="500"
+                    aria-label="Message input"
+                >
+                <button id="send-btn" class="send-button" aria-label="Send message">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="22" y1="2" x2="11" y2="13"></line>
+                        <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                    </svg>
+                </button>
+            </div>
+            <div class="character-counter">
+                <span id="char-count">0</span> / 500
+            </div>
+        </div>
+        
+        <!-- Footer -->
+        <div class="chat-footer">
+            <p>Powered by AI • <a href="#" id="privacy-link">Privacy Policy</a> • <a href="#" id="terms-link">Terms of Service</a></p>
+        </div>
+    </div>
+    
+    <!-- Sample Questions (Optional) -->
+    <div class="sample-questions" id="sample-questions">
+        <h3>Try asking:</h3>
+        <button class="sample-btn" data-question="What payment methods do you support?">💳 Payment methods</button>
+        <button class="sample-btn" data-question="Do you support on-premises deployment?">🔧 On-premises deployment</button>
+        <button class="sample-btn" data-question="What is your refund policy?">💵 Refund policy</button>
+        <button class="sample-btn" data-question="How do I integrate with AWS?">☁️ AWS integration</button>
+    </div>
+    
+    <script src="/static/js/chat.js"></script>
+</body>
+</html>

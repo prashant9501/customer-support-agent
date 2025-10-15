@@ -1,0 +1,44 @@
+[Unit]
+Description=Customer Support Agent - AI-Powered Support System
+Documentation=https://github.com/your-repo/customer-support-agent
+After=network.target
+
+[Service]
+Type=simple
+User=ubuntu
+Group=ubuntu
+WorkingDirectory=/home/ubuntu/customer-support-agent/backend
+Environment="PATH=/home/ubuntu/customer-support-agent/venv/bin:/usr/local/bin:/usr/bin:/bin"
+Environment="PYTHONUNBUFFERED=1"
+
+# Load environment variables from .env file
+EnvironmentFile=/home/ubuntu/customer-support-agent/backend/.env
+
+# Start command
+ExecStart=/home/ubuntu/customer-support-agent/venv/bin/uvicorn app.main:app \
+    --host 0.0.0.0 \
+    --port 8000 \
+    --workers 4 \
+    --log-level info
+
+# Restart policy
+Restart=always
+RestartSec=10
+StartLimitInterval=60
+StartLimitBurst=3
+
+# Resource limits
+LimitNOFILE=65536
+MemoryMax=2G
+
+# Security settings
+NoNewPrivileges=true
+PrivateTmp=true
+
+# Logging
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=support-agent
+
+[Install]
+WantedBy=multi-user.target

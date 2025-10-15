@@ -1,0 +1,182 @@
+upstream fastapi_backend {
+    server 127.0.0.1:8000;
+    keepalive 32;
+}
+
+server {
+    listen 80;
+    listen [::]:80;
+    server_name _;  # Replace with your domain or EC2 public IP
+
+    # Logging
+    access_log /var/log/nginx/support-agent-access.log;
+    error_log /var/log/nginx/support-agent-error.log;
+
+    # Security headers
+    add_header X-Frame-Options "SAMEORIGIN" always;
+    add_header X-Content-Type-Options "nosniff" always;
+    add_header X-XSS-Protection "1; mode=block" always;
+    add_header Referrer-Policy "no-referrer-when-downgrade" always;
+
+    # Gzip compression
+    gzip on;
+    gzip_vary on;
+    gzip_proxied any;
+    gzip_comp_level 6;
+    gzip_types text/plain text/css text/xml text/javascript 
+               application/x-javascript application/xml+rss 
+               application/json application/javascript;
+    gzip_min_length 1024;
+
+    # Client body size limit
+    client_max_body_size 1M;
+
+    # Serve static files
+    location /static {
+        alias /home/ubuntu/customer-support-agent/frontend/static;
+        expires 30d;
+        add_header Cache-Control "public, immutable";
+        
+        # CORS headers for static files
+        add_header Access-Control-Allow-Origin *;
+    }
+
+    # Serve frontend index.html
+    location = / {
+        root /home/ubuntu/customer-support-agent/frontend;
+        index index.html;
+        try_files /index.html =404;
+    }
+
+    # Proxy API requests to FastAPI backend
+    location /api {
+        proxy_pass http://fastapi_backend;
+        proxy_http_version 1.1;
+        
+        # Headers
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_set_header Connection "";
+        
+        # Timeouts
+        proxy_connect_timeout 60s;
+        proxy_send_timeout 60s;
+        proxy_read_timeout 60s;
+        
+        # Buffering
+        proxy_buffering on;
+        proxy_buffer_size 4k;
+        proxy_buffers 8 4k;
+    }
+
+    # Health check endpoint
+    location /health {
+        proxy_pass http://fastapi_backend/health;
+        proxy_http_version 1.1;
+        proxy_set_header Host $host;
+        proxy_set_header Connection "";
+        
+        access_log off;
+    }
+
+    # API docs (Swagger)
+    location /docs {
+        proxy_pass http://fastapi_backend/docs;
+        proxy_http_version 1.1;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    }
+
+    location /openapi.json {
+        proxy_pass http://fastapi_backend/openapi.json;
+        proxy_http_version 1.1;
+        proxy_set_header Host $host;
+    }
+
+    # WebSocket support
+    location /ws {
+        proxy_pass http://fastapi_backend;
+        proxy_http_version 1.1;
+        
+        # WebSocket headers
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection "upgrade";
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        
+        # WebSocket timeouts
+        proxy_connect_timeout 7d;
+        proxy_send_timeout 7d;
+        proxy_read_timeout 7d;
+        
+        # Disable buffering for WebSocket
+        proxy_buffering off;
+    }
+
+    # Deny access to sensitive files
+    location ~ /\.(?!well-known) {
+        deny all;
+    }
+
+    location ~ /\.env {
+        deny all;
+    }
+
+    # Error pages
+    error_page 404 /404.html;
+    location = /404.html {
+        root /usr/share/nginx/html;
+        internal;
+    }
+
+    error_page 500 502 503 504 /50x.html;
+    location = /50x.html {
+        root /usr/share/nginx/html;
+        internal;
+    }
+}
+
+# SSL Configuration (uncomment and configure after setting up Let's Encrypt)
+# server {
+#     listen 443 ssl http2;
+#     listen [::]:443 ssl http2;
+#     server_name your-domain.com;
+#
+#     # SSL certificates (managed by Certbot)
+#     ssl_certificate /etc/letsencrypt/live/your-domain.com/fullchain.pem;
+#     ssl_certificate_key /etc/letsencrypt/live/your-domain.com/privkey.pem;
+#     include /etc/letsencrypt/options-ssl-nginx.conf;
+#     ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem;
+#
+#     # SSL configuration
+#     ssl_protocols TLSv1.2 TLSv1.3;
+#     ssl_ciphers 'ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384';
+#     ssl_prefer_server_ciphers off;
+#     ssl_session_cache shared:SSL:10m;
+#     ssl_session_timeout 10m;
+#
+#     # HSTS (HTTP Strict Transport Security)
+#     add_header Strict-Transport-Security "max-age=31536000; includeSubDomains" always;
+#
+#     # ... (copy all location blocks from above HTTP server)
+# }
+#
+# # Redirect HTTP to HTTPS
+# server {
+#     listen 80;
+#     listen [::]:80;
+#     server_name your-domain.com;
+#     
+#     location /.well-known/acme-challenge/ {
+#         root /var/www/html;
+#     }
+#     
+#     location / {
+#         return 301 https://$server_name$request_uri;
+#     }
+# }

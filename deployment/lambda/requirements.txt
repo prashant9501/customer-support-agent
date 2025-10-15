@@ -1,0 +1,19 @@
+# Lambda-specific requirements
+# These packages will be included in the Lambda deployment package
+
+# Mangum - ASGI adapter for AWS Lambda
+mangum==0.17.0
+
+# Include all backend requirements
+-r ../../backend/requirements.txt
+
+# Note: Some packages may need to be included as Lambda Layers
+# due to the 50MB deployment package size limit:
+# - chromadb (large package, consider using S3 for vector store)
+# - langchain packages (can be bundled as a layer)
+# - openai
+
+# Recommended Lambda Layer structure:
+# Layer 1: Core dependencies (langchain, openai, pydantic)
+# Layer 2: Vector store (chromadb or use S3-backed alternative)
+# Deployment package: Application code + mangum

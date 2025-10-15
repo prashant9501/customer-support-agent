@@ -1,0 +1,184 @@
+{
+  "documents": [
+    {
+      "text": "Our platform supports integration with all major cloud providers including AWS, Google Cloud Platform, and Microsoft Azure. We offer pre-built connectors and SDKs for seamless integration. For AWS, we support S3, EC2, Lambda, and SageMaker. For GCP, we support Cloud Storage, Compute Engine, and Vertex AI. For Azure, we support Blob Storage, Virtual Machines, and Azure ML.",
+      "metadata": {
+        "category": "technical",
+        "source": "Technical Documentation",
+        "topic": "Cloud Integration",
+        "last_updated": "2025-01-15"
+      }
+    },
+    {
+      "text": "Yes, we fully support on-premises deployment. Our on-prem solution includes local model hosting, private vector databases, and air-gapped environments. You can deploy our platform on your own infrastructure without any internet connectivity. We provide Docker containers and Kubernetes manifests for easy deployment. Technical support is included for enterprise customers.",
+      "metadata": {
+        "category": "technical",
+        "source": "Technical Documentation",
+        "topic": "On-Premises Deployment",
+        "last_updated": "2025-01-15"
+      }
+    },
+    {
+      "text": "We support multiple programming languages including Python, JavaScript, Java, Go, and C#. Our SDK is available for all these languages with comprehensive documentation and code examples. For Python, we support versions 3.8 and above. JavaScript SDK works with Node.js 14+ and modern browsers. Java SDK requires Java 11 or higher.",
+      "metadata": {
+        "category": "technical",
+        "source": "Technical Documentation",
+        "topic": "SDK Support",
+        "last_updated": "2025-01-15"
+      }
+    },
+    {
+      "text": "Our API supports both REST and GraphQL interfaces. The REST API follows OpenAPI 3.0 specification and includes automatic pagination, filtering, and sorting. Rate limits are 1000 requests per minute for Pro tier and 10000 for Enterprise tier. We also provide WebSocket connections for real-time updates and streaming responses.",
+      "metadata": {
+        "category": "technical",
+        "source": "API Documentation",
+        "topic": "API Features",
+        "last_updated": "2025-01-15"
+      }
+    },
+    {
+      "text": "We implement industry-standard security measures including AES-256 encryption at rest, TLS 1.3 for data in transit, and SOC 2 Type II compliance. All data is encrypted using customer-managed keys. We support SSO with SAML 2.0 and OAuth 2.0. Regular security audits are performed by third-party firms. We are also GDPR and HIPAA compliant.",
+      "metadata": {
+        "category": "technical",
+        "source": "Security Documentation",
+        "topic": "Security & Compliance",
+        "last_updated": "2025-01-15"
+      }
+    },
+    {
+      "text": "We accept all major payment methods including credit cards (Visa, MasterCard, American Express, Discover), debit cards, PayPal, bank transfers (ACH), and wire transfers. For enterprise customers, we also accept purchase orders with Net 30 payment terms. All transactions are processed securely through Stripe and are PCI DSS compliant.",
+      "metadata": {
+        "category": "billing",
+        "source": "Billing FAQ",
+        "topic": "Payment Methods",
+        "last_updated": "2025-01-15"
+      }
+    },
+    {
+      "text": "We offer three pricing tiers: Starter ($29/month), Professional ($99/month), and Enterprise (custom pricing). Starter includes up to 1000 API calls/month, 5GB storage, and email support. Professional includes 50000 API calls/month, 100GB storage, priority support, and custom integrations. Enterprise includes unlimited API calls, dedicated support, SLA guarantees, and custom deployment options. Annual billing offers 20% discount.",
+      "metadata": {
+        "category": "billing",
+        "source": "Pricing Page",
+        "topic": "Pricing Plans",
+        "last_updated": "2025-01-15"
+      }
+    },
+    {
+      "text": "Our refund policy allows for a full refund within 30 days of purchase if you are not satisfied with our service. For annual subscriptions, we offer pro-rated refunds if you cancel within the first 90 days. Refunds are processed to the original payment method within 5-7 business days. To request a refund, please contact our billing support team at billing@company.com with your account details.",
+      "metadata": {
+        "category": "billing",
+        "source": "Terms of Service",
+        "topic": "Refund Policy",
+        "last_updated": "2025-01-15"
+      }
+    },
+    {
+      "text": "You can upgrade or downgrade your plan at any time from your account dashboard. Upgrades take effect immediately and you will be charged the prorated difference for the current billing cycle. Downgrades take effect at the start of your next billing cycle. If you downgrade, your data will be preserved but some features may become unavailable. You will receive an email confirmation of any plan changes.",
+      "metadata": {
+        "category": "billing",
+        "source": "Billing FAQ",
+        "topic": "Plan Changes",
+        "last_updated": "2025-01-15"
+      }
+    },
+    {
+      "text": "Invoices are generated automatically at the beginning of each billing cycle and sent to your registered email address. You can also download invoices anytime from your account dashboard under Billing > Invoices. Invoices include detailed breakdowns of charges, usage metrics, and payment information. For custom invoicing requirements (e.g., specific PO numbers, additional recipient emails), please contact our billing team.",
+      "metadata": {
+        "category": "billing",
+        "source": "Billing FAQ",
+        "topic": "Invoicing",
+        "last_updated": "2025-01-15"
+      }
+    },
+    {
+      "text": "Our company was founded in 2020 with a mission to democratize AI technology and make it accessible to businesses of all sizes. We are headquartered in San Francisco with offices in New York, London, and Singapore. Our team consists of 150+ employees including AI researchers, engineers, and customer success specialists. We have served over 5000 customers across 50 countries.",
+      "metadata": {
+        "category": "general",
+        "source": "About Us",
+        "topic": "Company Information",
+        "last_updated": "2025-01-15"
+      }
+    },
+    {
+      "text": "We offer comprehensive support through multiple channels: email support (support@company.com) with 24-hour response time, live chat available 9 AM - 6 PM EST Monday-Friday, community forum for peer-to-peer help, and extensive documentation with tutorials and guides. Professional tier customers get priority support with 4-hour response time. Enterprise customers receive dedicated account managers and 24/7 phone support.",
+      "metadata": {
+        "category": "general",
+        "source": "Support Page",
+        "topic": "Support Channels",
+        "last_updated": "2025-01-15"
+      }
+    },
+    {
+      "text": "We take data privacy very seriously. We comply with GDPR, CCPA, and other international privacy regulations. We never sell your data to third parties. You maintain full ownership of your data and can export or delete it at any time. Our privacy policy is available at company.com/privacy and is regularly updated to reflect best practices. We also offer data residency options for customers with specific geographic requirements.",
+      "metadata": {
+        "category": "general",
+        "source": "Privacy Policy",
+        "topic": "Data Privacy",
+        "last_updated": "2025-01-15"
+      }
+    },
+    {
+      "text": "New features and updates are released on a regular monthly cycle. Major releases are announced via email, in-app notifications, and our blog. You can view our product roadmap at company.com/roadmap to see upcoming features. We also maintain a changelog at company.com/changelog for detailed release notes. Customers can submit feature requests through our feedback portal, and we prioritize based on customer demand.",
+      "metadata": {
+        "category": "general",
+        "source": "Product Updates",
+        "topic": "Updates & Roadmap",
+        "last_updated": "2025-01-15"
+      }
+    },
+    {
+      "text": "Yes, we offer a 14-day free trial with no credit card required. The trial includes full access to Professional tier features so you can evaluate the platform thoroughly. During the trial, you can test all integrations, APIs, and features. You will receive email reminders 3 days before your trial ends. After the trial, you can choose to upgrade to a paid plan or continue with our free tier (limited features).",
+      "metadata": {
+        "category": "general",
+        "source": "Pricing FAQ",
+        "topic": "Free Trial",
+        "last_updated": "2025-01-15"
+      }
+    },
+    {
+      "text": "Our Service Level Agreement (SLA) guarantees 99.9% uptime for Professional tier and 99.99% uptime for Enterprise tier. We provide monthly uptime reports and SLA credits if we fail to meet these guarantees. Our infrastructure is hosted on AWS with multi-region redundancy and automatic failover. We perform scheduled maintenance during low-traffic windows with advance notification.",
+      "metadata": {
+        "category": "technical",
+        "source": "SLA Documentation",
+        "topic": "Uptime & Reliability",
+        "last_updated": "2025-01-15"
+      }
+    },
+    {
+      "text": "We provide comprehensive onboarding for new customers including welcome emails with getting started guides, video tutorials covering common use cases, sample code and templates, and optional 1-on-1 onboarding calls for Professional and Enterprise customers. We also offer training workshops and certification programs for teams. All onboarding materials are available in our knowledge base at company.com/docs.",
+      "metadata": {
+        "category": "general",
+        "source": "Onboarding Guide",
+        "topic": "Getting Started",
+        "last_updated": "2025-01-15"
+      }
+    },
+    {
+      "text": "For technical issues, please check our status page at status.company.com first. If the issue persists, contact our technical support team at support@company.com with detailed information including error messages, request IDs, timestamps, and steps to reproduce. For urgent production issues, Enterprise customers can call our 24/7 hotline. Average resolution time is 4 hours for critical issues and 24 hours for non-critical issues.",
+      "metadata": {
+        "category": "technical",
+        "source": "Support Documentation",
+        "topic": "Troubleshooting",
+        "last_updated": "2025-01-15"
+      }
+    },
+    {
+      "text": "If your payment fails, we will automatically retry the charge 3 times over 5 days. You will receive email notifications for each failed attempt. If all retries fail, your account will be temporarily suspended but your data will be preserved for 30 days. To reactivate, simply update your payment information in the billing settings. For assistance, contact billing@company.com.",
+      "metadata": {
+        "category": "billing",
+        "source": "Billing FAQ",
+        "topic": "Failed Payments",
+        "last_updated": "2025-01-15"
+      }
+    },
+    {
+      "text": "We offer volume discounts for high-usage customers. If you exceed your plan's API limits consistently, contact our sales team at sales@company.com to discuss custom pricing. Discounts typically range from 10-40% based on commitment level and usage volume. Non-profit organizations and educational institutions may qualify for special pricing - please email partnerships@company.com.",
+      "metadata": {
+        "category": "billing",
+        "source": "Pricing Page",
+        "topic": "Discounts & Custom Pricing",
+        "last_updated": "2025-01-15"
+      }
+    }
+  ]
+}
