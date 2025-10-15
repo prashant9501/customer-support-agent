@@ -114,7 +114,7 @@ print_success "Service started"
 
 # Configure NGINX
 print_info "Configuring NGINX..."
-cp deployment/ec2/nginx/support-agent /etc/nginx/sites-available/
+cp deployment/ec2/nginx/sites-available/support-agent /etc/nginx/sites-available/
 ln -sf /etc/nginx/sites-available/support-agent /etc/nginx/sites-enabled/
 rm -f /etc/nginx/sites-enabled/default
 nginx -t && systemctl reload nginx
