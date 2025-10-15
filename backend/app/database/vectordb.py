@@ -23,7 +23,9 @@ def load_knowledge_base() -> List[Document]:
     """Load knowledge base documents from JSON file"""
     try:
         # Get the absolute path to the data file
-        current_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+        # __file__ is at backend/app/database/vectordb.py
+        # We need to go up 3 levels to get to project root, then down to backend/data
+        current_dir = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
         data_path = os.path.join(current_dir, "data", "router_agent_documents.json")
         
         logger.info(f"Loading knowledge base from: {data_path}")
