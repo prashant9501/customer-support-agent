@@ -43,9 +43,7 @@ server {
 
     # Serve frontend index.html
     location = / {
-        root /home/ubuntu/customer-support-agent/frontend;
-        index index.html;
-        try_files /index.html =404;
+        alias /home/ubuntu/customer-support-agent/frontend/index.html;
     }
 
     # Proxy API requests to FastAPI backend
