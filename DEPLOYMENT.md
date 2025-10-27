@@ -52,7 +52,6 @@ You need to change the owner of the entire application directory from root to th
 Run this single command from your home directory (~):
 ```bash
 sudo chown -R ubuntu:ubuntu /home/ubuntu/customer-support-agent
-```
 
 # Navigate to the directory
 cd ~/customer-support-agent
