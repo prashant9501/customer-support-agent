@@ -47,6 +47,13 @@ ssh -i your-key.pem ubuntu@YOUR-EC2-PUBLIC-IP
 # Clone your repository
 git clone https://github.com/YOUR_USERNAME/YOUR_REPO.git ~/customer-support-agent
 
+#### Change File Ownership
+You need to change the owner of the entire application directory from root to the ubuntu user. This will allow your application to write to the database.
+Run this single command from your home directory (~):
+```bash
+sudo chown -R ubuntu:ubuntu /home/ubuntu/customer-support-agent
+```
+
 # Navigate to the directory
 cd ~/customer-support-agent
 ```
