@@ -29,7 +29,7 @@ server {
     gzip_min_length 1024;
 
     # Client body size limit
-    client_max_body_size 1M;
+    client_max_body_size 50M;
 
     # Serve static files
     location /static {
