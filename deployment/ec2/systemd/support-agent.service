@@ -16,7 +16,7 @@ EnvironmentFile=/home/ubuntu/customer-support-agent/backend/.env
 
 # Start command
 ExecStart=/home/ubuntu/customer-support-agent/venv/bin/uvicorn app.main:app \
-    --host 0.0.0.0 \
+    --host 127.0.0.1 \
     --port 8000 \
     --workers 4 \
     --log-level info
