@@ -77,9 +77,8 @@ print_success "Virtual environment created"
 
 # Activate virtual environment and install dependencies
 print_info "Installing Python packages..."
-source venv/bin/activate
-pip install --upgrade pip
-pip install -r backend/requirements.txt
+"$APP_DIR/venv/bin/pip" install --upgrade pip
+"$APP_DIR/venv/bin/pip" install -r backend/requirements.txt
 print_success "Python packages installed"
 
 # Create .env file if it doesn't exist
@@ -96,7 +95,7 @@ fi
 # Initialize ChromaDB
 print_info "Initializing ChromaDB vector store..."
 cd backend
-python -c "from app.database.vectordb import initialize_vectordb; initialize_vectordb()" 2>/dev/null || print_info "Note: ChromaDB will initialize on first run"
+"$APP_DIR/venv/bin/python" -c "from app.database.vectordb import initialize_vectordb; initialize_vectordb()" 2>/dev/null || print_info "Note: ChromaDB will initialize on first run"
 cd ..
 print_success "Vector store initialized"
 
